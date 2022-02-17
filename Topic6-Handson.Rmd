@@ -1,0 +1,107 @@
+---
+title: "R4DSA Topic 6"
+subtitle: "Creating Awesome Wed Slides with R Markdown</br> xaringan methods"
+author: "Leslie Long"
+institute: "School of Computing and Information Systems</br>Singapore Management University"
+date: "2022/02/09 (updated: `r Sys.Date()`)"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts]
+    lib_dir: libs
+    nature:
+      ratio: "16:9"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+# Content
+
+---
+class: center, middle
+
+# Introducing Xaringan
+
+.right[
+### An R package for creating awesome web slides
+]
+
+---
+class: middle,center 
+### Introducing 
+
+--
+
+## xaringan
+# this is a change for github test
+--
+### R package 
+
+--
+
+### with R Markdown
+
+---
+## Two Equal Columns
+
+.pull-left[
+### This is column on the left.
+]
+
+.pull-right[
+### This is column on the right.
+]
+
+---
+## Two unequal columns 
+
+.left-column[
+xaringan is an R ...
+]
+
+.right-column[
+xaringan is an R package ...
+]
+
+---
+# Inserting a histogram
+
+.pull-left[
+```{r echo=TRUE, eval=FALSE, message=FALSE}
+# echo: code chunk; eval: graph/output
+library(tidyverse)
+
+exam_data <- read_csv("data/Exam_data.csv")
+
+ggplot(data=exam_data, aes(x = MATHS)) +
+  geom_histogram(bins=10,
+                 boundary = 100,
+                 color="black",
+                 fill="grey") +
+  ggtitle("Distribution of Maths scores")
+```
+]
+
+.pull-right[
+```{r echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE, fig.retina=3, fig.height=6}
+library(tidyverse)
+
+exam_data <- read_csv("data/Exam_data.csv")
+ggplot(data=exam_data, aes(x = MATHS)) +
+  geom_histogram(bins=10,
+                 boundary = 100,
+                 color="black",
+                 fill="grey") +
+  ggtitle("Distribution of Maths scores")
+```
+]
+
+---
+![](image/jupiter_icon.jpeg){height=25%}
+---
+## Adding Table
+
+```{r echo=FALSE, eval=TRUE}
+head(exam_data) %>%
+  knitr::kable(format = "html")
+```
